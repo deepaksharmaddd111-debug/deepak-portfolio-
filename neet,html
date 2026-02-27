@@ -1,166 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepak Sharma | NEET Aspirant & Tech Enthusiast</title>
-    <style>
-        :root {
-            --primary-blue: #2563eb;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        /* Header Profile Section */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            gap: 30px;
-            flex-wrap: wrap; /* Phone me sahi dikhne ke liye */
-        }
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary-blue);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-        }
-        .profile-info h1 {
-            margin: 0 0 10px 0;
-            font-size: 2.5em;
-            color: var(--text-dark);
-        }
-        .profile-info h3 {
-            margin: 0 0 15px 0;
-            color: var(--primary-blue);
-            font-weight: 500;
-        }
-        .profile-info p {
-            color: var(--text-light);
-            font-size: 1.1em;
-            max-width: 500px;
-        }
-        /* Section Titles */
-        .section-title {
-            font-size: 1.8em;
-            border-bottom: 3px solid var(--primary-blue);
-            display: inline-block;
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-        }
-        /* Notes Grid Section */
-        .notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .note-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-blue);
-            transition: transform 0.3s;
-        }
-        .note-card:hover {
-            transform: translateY(-5px);
-        }
-        .note-card h4 {
-            font-size: 1.3em;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .note-card p {
-            color: var(--text-light);
-            font-size: 0.95em;
-            margin-bottom: 20px;
-        }
-        .btn-download {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .btn-download:hover {
-            background-color: #1d4ed8;
-        }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-light);
-            margin-top: 20px;
-        }
-    </style>
+  <title>Overlapping Animation Demo</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .character {
+      position: relative;
+      width: 120px;
+      height: 200px;
+    }
+
+    .body {
+      width: 60px;
+      height: 100px;
+      background: #4CAF50;
+      position: absolute;
+      left: 30px;
+      top: 60px;
+      border-radius: 10px;
+      animation: moveBody 2s infinite alternate ease-in-out;
+    }
+
+    .head {
+      width: 50px;
+      height: 50px;
+      background: #FFC107;
+      position: absolute;
+      left: 35px;
+      top: 10px;
+      border-radius: 50%;
+      animation: moveHead 2s infinite alternate ease-in-out;
+      animation-delay: 0.2s; /* Overlap */
+    }
+
+    .arm {
+      width: 20px;
+      height: 80px;
+      background: #2196F3;
+      position: absolute;
+      top: 70px;
+      border-radius: 10px;
+      transform-origin: top center;
+    }
+
+    .left-arm {
+      left: 0;
+      animation: swingArm 2s infinite alternate ease-in-out;
+      animation-delay: 0.3s; /* Overlap */
+    }
+
+    .right-arm {
+      right: 0;
+      animation: swingArm 2s infinite alternate ease-in-out;
+      animation-delay: 0.4s; /* More delay */
+    }
+
+    .hair {
+      width: 60px;
+      height: 20px;
+      background: #ff5722;
+      position: absolute;
+      left: 30px;
+      top: 0;
+      border-radius: 10px;
+      animation: moveHair 2s infinite alternate ease-in-out;
+      animation-delay: 0.5s; /* Last follower */
+    }
+
+    @keyframes moveBody {
+      from { transform: translateX(-40px); }
+      to { transform: translateX(40px); }
+    }
+
+    @keyframes moveHead {
+      from { transform: translateX(-35px); }
+      to { transform: translateX(35px); }
+    }
+
+    @keyframes swingArm {
+      from { transform: rotate(-30deg); }
+      to { transform: rotate(30deg); }
+    }
+
+    @keyframes moveHair {
+      from { transform: translateX(-30px); }
+      to { transform: translateX(30px); }
+    }
+
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <div class="profile-header">
-            <img src="profile.jpg" alt="Deepak Sharma" class="profile-img">
-            <div class="profile-info">
-                <h1>Deepak Sharma</h1>
-                <h3>Medical Aspirant | Future Doctor</h3>
-                <p>Namaste! Main ek kisan parivar se aata hoon aur mera bada sapna medical field mein serve karne ka hai. Filhal main Patna mein reh kar Mission NEET 2026 ki taiyari kar raha hoon. Padhai ke alawa, mujhe naye tech tools aur coding seekhna pasand hai.</p>
-            </div>
-        </div>
-
-        <div>
-            <h2 class="section-title">My Study Notes & Resources</h2>
-            <p style="color: #64748b; margin-bottom: 20px;">Yahan main apne self-made revision notes aur important topics share karta hoon:</p>
-            
-            <div class="notes-grid">
-                <div class="note-card">
-                    <h4>🧬 Biology Notes</h4>
-                    <p>Genetics, Human Reproduction aur Evolution ke NCERT based detailed flowcharts aur MCQs.</p>
-                    <a href="#" class="btn-download">View Notes</a>
-                </div>
-
-                <div class="note-card">
-                    <h4>🧪 Organic Chemistry</h4>
-                    <p>Important reaction mechanisms, name reactions aur unke exceptions ka quick revision guide.</p>
-                    <a href="#" class="btn-download">View Notes</a>
-                </div>
-
-                <div class="note-card">
-                    <h4>⚡ Physics Formulas</h4>
-                    <p>Current Electricity aur Wave Motion ke sabhi important formulas aur concept maps.</p>
-                    <a href="#" class="btn-download">View Notes</a>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>Discipline + Consistency = Success 🩺</p>
-            <p>© 2026 Deepak Sharma</p>
-        </footer>
-
-    </div>
+  <div class="character">
+    <div class="hair"></div>
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm left-arm"></div>
+    <div class="arm right-arm"></div>
+  </div>
 
 </body>
 </html>
